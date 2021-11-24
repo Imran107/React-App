@@ -61,9 +61,11 @@ class CounterButton extends Component {
   increment() { //Update state - counter++
     //console.log('increment');
     //this.state.counter++; //Bad Practice
-    this.setState({
-        counter: this.state.counter + this.props.by
-    });
+    this.setState(
+      () => {
+        return {counter: this.state.counter + this.props.by}
+      }
+    );
 
     this.props.incrementMethod(this.props.by)
   }
