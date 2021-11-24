@@ -28,9 +28,11 @@ class Counter extends Component{
 
   increment(by) { 
     console.log(`increment from parent ${by}`);
-    this.setState({
-        counter: this.state.counter + by
-    });
+    this.setState(
+    (prevState) => {
+          return {counter: prevState.counter + by}
+      }
+    );
   }
 
 }
@@ -62,8 +64,8 @@ class CounterButton extends Component {
     //console.log('increment');
     //this.state.counter++; //Bad Practice
     this.setState(
-      () => {
-        return {counter: this.state.counter + this.props.by}
+      (prevState) => {
+        return {counter: prevState.counter + this.props.by}
       }
     );
 
