@@ -5,12 +5,14 @@ import SecondComponent from './components/leaning examples/SecondComponent';
 import './App.css';
 import ThirdComponent from './components/leaning examples/ThirdComponent';
 import Counter from './components/counter/Counter';
+import TodoApp from './components/counter/todo/TodoApp';
  
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Counter></Counter>
+        {/*<Counter></Counter>*/}
+        <TodoApp></TodoApp>
       </div>
     );
   }
