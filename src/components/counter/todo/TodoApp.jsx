@@ -1,20 +1,27 @@
 import React, {Component} from 'react'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 class TodoApp extends Component{
     render(){
         return(
             <div className="MyTodoApp">
                 <Router>
-                    <Routes>
-                    <Route path="/" exact element={<LoginComponent />}/>
-                    <Route path="/login" element={<LoginComponent />}/>
-                    <Route path="/welcome" element={<WelcomeComponent/>}/>
-                    </Routes>
+                    <>
+                    <Switch>
+                    <Route path="/" exact component={LoginComponent}/>
+                    <Route path="/login" component={LoginComponent}/>
+                    <Route path="/welcome" component={WelcomeComponent}/>
+                    <Route component={ErrorComponent}/>
+                    </Switch>
+                    </>
                 </Router>
             </div>
         );
     }
+}
+
+function ErrorComponent(){
+    return <div> Error: Please contact support </div>
 }
 
 class WelcomeComponent extends Component{
@@ -36,6 +43,7 @@ class LoginComponent extends Component{
 
         this.handleChange = this.handleChange.bind(this)
         this.loginClicked = this.loginClicked.bind(this)
+        //let navigate = useNavigate();
     }
 
     handleChange(event){
@@ -44,11 +52,12 @@ class LoginComponent extends Component{
             [event.target.name]:event.target.value
         });
     }
-
+    
     loginClicked(){
         if(this.state.username === 'in28minutes' && this.state.password ==='dummy'){
-            this.setState({hasLoginFailed : false})
-            this.setState({showSuccessMessage : true})
+            this.props.history.push("/welcome")
+            //this.setState({hasLoginFailed : false})
+            //this.setState({showSuccessMessage : true})
         }else{
             this.setState({hasLoginFailed : true})
             this.setState({showSuccessMessage : false})
