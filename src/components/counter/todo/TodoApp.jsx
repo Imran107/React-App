@@ -8,15 +8,47 @@ class TodoApp extends Component{
                 <Router>
                     <>
                     <Switch>
-                    <Route path="/" exact component={LoginComponent}/>
-                    <Route path="/login" component={LoginComponent}/>
-                    <Route path="/welcome/:name" component={WelcomeComponent}/>
-                    <Route component={ErrorComponent}/>
+                        <Route path="/" exact component={LoginComponent}/>
+                        <Route path="/login" component={LoginComponent}/>
+                        <Route path="/welcome/:name" component={WelcomeComponent}/>
+                        <Route path="/todos" component={ListTodosComponent}/>
+                        <Route component={ErrorComponent}/>
                     </Switch>
                     </>
                 </Router>
             </div>
         );
+    }
+}
+
+class ListTodosComponent extends Component{
+
+    constructor(props){
+        super(props)
+        this.state = {
+            todo : {id:1, description: "Learn React"}
+        }
+    }
+    render(){
+        return (
+                <div> 
+                    <h1>List Todos</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{this.state.todo.id}</td>
+                                <td>{this.state.todo.description}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            )
     }
 }
 
