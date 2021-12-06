@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import FirstComponent from './components/leaning examples/FirstComponent';
 import SecondComponent from './components/leaning examples/SecondComponent';
-import './App.css';
 import ThirdComponent from './components/leaning examples/ThirdComponent';
 import Counter from './components/counter/Counter';
 import TodoApp from './components/counter/todo/TodoApp';
+import './App.css';
+import './bootstrap.css';
  
 class App extends Component {
   render() {
