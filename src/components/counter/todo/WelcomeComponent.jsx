@@ -6,7 +6,7 @@ export default class WelcomeComponent extends Component{
     constructor(props){
         super(props)
 
-        this.getCustomizedMessage = this.getCustomizedMessage.bind(this)
+        this.retrieveWelcomeMessage = this.retrieveWelcomeMessage.bind(this)
     }
 
     render(){
@@ -18,13 +18,13 @@ export default class WelcomeComponent extends Component{
                 </div>
                 <div className="container"> 
                    Click here to get the customized message 
-                   <button className="btn btn-success" onClick={this.getCustomizedMessage}> Get Message</button>
+                   <button className="btn btn-success" onClick={this.retrieveWelcomeMessage}> Get Message</button>
                 </div>
             </>
         );
     }
 
-    getCustomizedMessage(){
-        console.log('');
+    retrieveWelcomeMessage(){
+        console.log('Retrieve Message');
     }
 }
