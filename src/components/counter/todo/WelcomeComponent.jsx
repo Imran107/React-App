@@ -1,12 +1,16 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import HelloWorldService from '../../api/todo/HelloWorldService'
 
 export default class WelcomeComponent extends Component{
 
     constructor(props){
         super(props)
-
         this.retrieveWelcomeMessage = this.retrieveWelcomeMessage.bind(this)
+        this.state = {
+            welcomeMessage : ''
+        }
+        this.handleSuccessfulResponse = this.handleSuccessfulResponse.bind(this)
     }
 
     render(){
@@ -20,11 +24,21 @@ export default class WelcomeComponent extends Component{
                    Click here to get the customized message 
                    <button className="btn btn-success" onClick={this.retrieveWelcomeMessage}> Get Message</button>
                 </div>
+                <div className="container"> 
+                   {this.state.welcomeMessage}
+                </div>
             </>
         );
     }
 
     retrieveWelcomeMessage(){
-        console.log('Retrieve Message');
+        HelloWorldService.executeHelloWorldService()
+        .then(response => this.handleSuccessfulResponse(response))
+    }
+
+    handleSuccessfulResponse(response){
+        this.setState(
+            { welcomeMessage:response.data}
+        );
     }
 }
