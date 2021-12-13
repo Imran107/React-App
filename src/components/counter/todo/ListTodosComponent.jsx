@@ -14,6 +14,7 @@ class ListTodosComponent extends Component{
 
         this.deleteTodo = this.deleteTodo.bind(this)
         this.refreshGrid = this.refreshGrid.bind(this)
+        this.UpdateTodo = this.UpdateTodo.bind(this)
     }
 
     deleteTodo(id){
@@ -24,6 +25,10 @@ class ListTodosComponent extends Component{
             this.refreshGrid();
             } 
         )
+    }
+
+    UpdateTodo(id){
+        this.props.history.push(`/todos/${id}`);
     }
 
     componentWillUnmount(){
@@ -64,6 +69,7 @@ class ListTodosComponent extends Component{
                                     <th>Is Completed</th>
                                     <th>Target Date</th>
                                     <th>Delete</th>
+                                    <th>Update</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,6 +81,7 @@ class ListTodosComponent extends Component{
                                             <td>{todo.done.toString()}</td>
                                             <td>{todo.targetDate.toString()}</td>
                                             <td><button className="btn btn-warning" onClick={() => this.deleteTodo(todo.id)}>Delete</button></td>
+                                            <td><button className="btn btn-success" onClick={() => this.UpdateTodo(todo.id)}>Update</button></td>
                                         </tr>
                                     )
                                 }
