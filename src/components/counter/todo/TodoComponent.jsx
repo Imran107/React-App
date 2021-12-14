@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import moment from 'moment';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 class TodoComponent extends Component{
 
@@ -12,8 +12,16 @@ class TodoComponent extends Component{
             targetDate : moment(new Date()).format('YYYY-MM-DD')
         }
         this.onSubmit = this.onSubmit.bind(this)
+        this.validate = this.validate.bind(this)
     }
 
+    validate(values){
+        let errors = {description:"Description should have at least 4 characters"}
+        console.log(values);
+        return errors
+    }
+
+    
     onSubmit(values){
         console.log(values);
     }
@@ -23,12 +31,15 @@ class TodoComponent extends Component{
         return(
             <div>
                 <h1>Todo</h1>
-                <div classname="container">
-                    <Formik initialValues={{description, targetDate}} onSubmit={this.onSubmit}
+                <div className="container">
+                    <Formik initialValues={{description, targetDate}} 
+                            onSubmit={this.onSubmit} 
+                            validate={this.validate}
                     >
                         {
                             (props) => (
                                 <Form>
+                                    <ErrorMessage name="description" component="div" className="alert alert-warning"/>
                                     <fieldset className="form-group">
                                         <label>Description</label>
                                         <Field type="text" className="form-control" name="description"></Field>
