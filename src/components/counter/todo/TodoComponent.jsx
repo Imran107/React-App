@@ -43,6 +43,8 @@ class TodoComponent extends Component{
                     <Formik initialValues={{description, targetDate}} 
                             onSubmit={this.onSubmit} 
                             validate={this.validate}
+                            validateOnBlur={false}
+                            validateOnChange={false}
                     >
                         {
                             (props) => (
