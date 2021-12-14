@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
-export default class FirstComponent extends Component {
-    render() {
-      return (
-        <div className="firstComponent">
-          First Component
-        </div>
-      );
-    }
-  }
+export default function ThirdComponent() {
+  return (
+    <div className="ThirdComponent">
+      Third Component
+    </div>
+  );
+}
