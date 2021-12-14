@@ -16,8 +16,16 @@ class TodoComponent extends Component{
     }
 
     validate(values){
-        let errors = {description:"Description should have at least 4 characters"}
-        console.log(values);
+        let errors = {}
+        if(!values.description){
+            errors.description = "Description field can't be empty"
+        }else if(values.description.length < 5){
+            errors.description = "There must be at least 5 characters for description"
+        }
+
+        if(!moment(values.targetDate).isValid()){
+            errors.targetDate = "Date is Invalid!"
+        }
         return errors
     }
 
@@ -40,6 +48,7 @@ class TodoComponent extends Component{
                             (props) => (
                                 <Form>
                                     <ErrorMessage name="description" component="div" className="alert alert-warning"/>
+                                    <ErrorMessage name="targetDate" component="div" className="alert alert-warning"/>
                                     <fieldset className="form-group">
                                         <label>Description</label>
                                         <Field type="text" className="form-control" name="description"></Field>
