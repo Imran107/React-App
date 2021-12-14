@@ -14,13 +14,12 @@ class TodoComponent extends Component{
     }
 
     render(){
-        let description= this.state.description
-        let targetDate = this.state.targetDate
+        let {description, targetDate} = this.state
         return(
             <div>
                 <h1>Todo</h1>
                 <div classname="container">
-                    <Formik initialValues={{description:description, targetDate:targetDate}}
+                    <Formik initialValues={{description, targetDate}}
                     >
                         {
                             (props) => (
