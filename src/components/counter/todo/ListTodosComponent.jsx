@@ -16,6 +16,7 @@ class ListTodosComponent extends Component{
         this.deleteTodo = this.deleteTodo.bind(this)
         this.refreshGrid = this.refreshGrid.bind(this)
         this.UpdateTodo = this.UpdateTodo.bind(this)
+        this.onAddClick  = this.onAddClick.bind(this)
     }
 
     deleteTodo(id){
@@ -26,6 +27,10 @@ class ListTodosComponent extends Component{
             this.refreshGrid();
             } 
         )
+    }
+
+    onAddClick(){
+        this.props.history.push('/todos/-1')
     }
 
     UpdateTodo(id){
@@ -88,6 +93,9 @@ class ListTodosComponent extends Component{
                                 }
                             </tbody>
                         </table>
+                        <div className="row">
+                            <button className="btn btn-success" onClick={this.onAddClick}>Add</button>
+                        </div>
                     </div>
                 </div>
             )
